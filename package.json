@@ -1,10 +1,4 @@
 {
-    "name": "angular-6-basic-authentication-example",
-    "version": "1.0.0",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/cornflourblue/angular-6-basic-authentication-example.git"
-    },
     "scripts": {
         "build": "webpack --mode production",
         "start": "webpack-dev-server --mode development --open"
@@ -19,6 +13,7 @@
         "@angular/platform-browser-dynamic": "^6.0.0",
         "@angular/router": "^6.0.0",
         "core-js": "^2.5.5",
+        "cors": "^2.8.5",
         "rxjs": "^6.1.0",
         "zone.js": "^0.8.26"
     },

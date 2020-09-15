@@ -28,7 +28,8 @@ module.exports = {
     new webpack.DefinePlugin({
       // global app config object
       config: JSON.stringify({
-        apiUrl: 'http://localhost:4000'
+        apiUrl: 'https://localhost:5001/api' //DEVELOPMENT
+        //apiUrl: 'https://seedingprecisionapi.azurewebsites.net' //SERVER
       })
     })
   ],
