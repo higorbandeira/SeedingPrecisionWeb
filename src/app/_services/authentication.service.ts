@@ -11,7 +11,9 @@ export class AuthenticationService {
         var user = new User;
         user.username = UserName;
         user.password = Password;
-        return this.http.post<any>(`${config.apiUrl}/user/login`, user)
+
+        return this.http.post<any>(`${config.apiUrl}/user/login`, user, {headers: 
+            {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } })
             .pipe(map(user => {
                 // login successful if there's a user in the response
                 if (user) {
