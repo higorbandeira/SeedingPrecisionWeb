@@ -4,17 +4,16 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
-import { AdminComponent } from './admin/admin.component';
 import { AuthService } from './auth.service'
 import { UserService } from './user.service'
 import { AuthGuard } from './auth.guard';
 import { LogoutComponent } from './logout/logout.component'
+import { JwtModule } from '@auth0/angular-jwt/lib/angular-jwt.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminComponent,
     LogoutComponent
   ],
   imports: [
@@ -30,15 +29,18 @@ import { LogoutComponent } from './logout/logout.component'
         component: LogoutComponent
       },
       {
-        path: 'admin',
-        component: AdminComponent,
-        canActivate: [AuthGuard]
-      },
-      {
         path: '',
         component: LoginComponent
       }
-    ])
+    ]),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function  tokenGetter() {
+             return     localStorage.getItem('access_token');},
+             allowedDomains: ['https://seedingprecisionapi.azurewebsites.net'],
+             disallowedRoutes:['https://seedingprecisionapi.azurewebsites.net/api/user/login']
+      }
+    })
   ],
   providers: [AuthService, UserService, AuthGuard],
   bootstrap: [AppComponent]
