@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service'
-import { UserService } from './user.service'
 import { AuthGuard } from './auth.guard';
 import { LogoutComponent } from './logout/logout.component'
 import { JwtModule } from '@auth0/angular-jwt/lib/angular-jwt.module';
@@ -42,7 +41,7 @@ import { JwtModule } from '@auth0/angular-jwt/lib/angular-jwt.module';
       }
     })
   ],
-  providers: [AuthService, UserService, AuthGuard],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
