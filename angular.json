@@ -21,7 +21,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/web.config"
             ],
             "styles": [
               "src/styles.css"
@@ -120,5 +121,6 @@
         }
       }
     }},
-  "defaultProject": "project"
+  "defaultProject": "project",
+  
 }
