@@ -6,8 +6,59 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+          background: #76b852; /* fallback for old browsers */
+          background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+          background: -moz-linear-gradient(right, #76b852, #8DC26F);
+          background: -o-linear-gradient(right, #76b852, #8DC26F);
+          background: linear-gradient(to left, #76b852, #8DC26F);
+          font-family: "Roboto", sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;      
+        }
+  </style>
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+    <!-- SPINNER -->
+    <style>
+      body {
+         height: 100vh;
+         display: flex;
+         text-align: center;
+         align-items: center;
+         justify-content: center;
+         background-color: #050f19;
+         color: #fff;
+         overflow: hidden;
+      }
+
+      #spinner {
+         display: inline-block;
+         width: 50px;
+         height: 50px;
+         border: 3px solid rgba(255, 255, 255, .3);
+         border-radius: 50%;
+         border-top-color: #fff;
+         animation: spin 1s ease-in-out infinite;
+         -webkit-animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+         to {
+            -webkit-transform: rotate(360deg);
+         }
+      }
+
+      @-webkit-keyframes spin {
+         to {
+            -webkit-transform: rotate(360deg);
+         }
+      }
+   </style>
+   <div id="spinner"></div>
+   <!-- SPINNER -->
+  </app-root>
 </body>
 </html>

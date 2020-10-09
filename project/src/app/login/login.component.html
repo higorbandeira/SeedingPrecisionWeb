@@ -1,0 +1,9 @@
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" *ngIf="loginForm" [formGroup]="loginForm">
+            <input type="text" placeholder="username" formControlName="UserName"/>
+            <input type="password" placeholder="password" formControlName="Password"/>
+            <button [disabled]="!loginForm.valid" (click)="login()">login</button>
+        </form>
+    </div>
+</div>
