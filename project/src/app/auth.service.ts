@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   async login(UserName:string, Password:string) {
-    debugger;
+    console.log(UserName + " - " + Password)
     try{
       const param = Object.assign(new LoginEntity, { Username: UserName, Password: Password })
       const user = await this.http.post<LoginResponse>("http://seedingprecisionapi.azurewebsites.net/api/user/login", param).toPromise();
