@@ -27,7 +27,7 @@ export class AuthService {
     debugger;
     try{
       const param = Object.assign(new LoginEntity, { Username: UserName, Password: Password })
-      const user = await this.http.post<LoginResponse>("https://localhost:5001/api/user/login", param).toPromise();
+      const user = await this.http.post<LoginResponse>("http://seedingprecisionapi.azurewebsites.net/api/user/login", param).toPromise();
       if (!user || !user.token) { return false; }
       localStorage.setItem('access_token', user.token);
       console.log(user);
