@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Action } from 'rxjs/internal/scheduler/Action';
+import { BusyService } from './Busy/busy.service';
 
 export class LoginResponse{
   token: string
@@ -16,13 +17,14 @@ export class LoginEntity{
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar, private busy: BusyService) { }
 
   public get loggedIn(): boolean{
     return localStorage.getItem('access_token') !==  null;
   }
 
   async login(UserName:string, Password:string) {
+    this.busy.show()
     try{
       const param = Object.assign(new LoginEntity, { Username: UserName, Password: Password })
       const user = await this.http.post<LoginResponse>("http://seedingprecisionapi.azurewebsites.net/api/user/login", param).toPromise();
@@ -31,6 +33,7 @@ export class AuthService {
       return true;
     }
     catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
+    finally {this.busy.hide()};
   }
 
   logout() {

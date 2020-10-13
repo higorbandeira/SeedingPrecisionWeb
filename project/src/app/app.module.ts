@@ -12,12 +12,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StatusAtualComponent } from './status-atual/status-atual.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { UserBarComponent } from './user-bar/user-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    StatusAtualComponent
+    StatusAtualComponent,
+    UserBarComponent
   ],
   imports: [
     BrowserModule,
