@@ -13,6 +13,7 @@ import { StatusAtualComponent } from './status-atual/status-atual.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UserBarComponent } from './user-bar/user-bar.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserBarComponent } from './user-bar/user-bar.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ChartsModule
   ],
   providers: [
     AuthService, AuthGuard,
