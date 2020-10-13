@@ -10,6 +10,8 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { AuthInterceptor } from './authconfig.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StatusAtualComponent } from './status-atual/status-atual.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { StatusAtualComponent } from './status-atual/status-atual.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [
     AuthService, AuthGuard,

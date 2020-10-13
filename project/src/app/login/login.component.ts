@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
   async login(){
     this.busy.show();
     var login = await this.auth.login(this.userName, this.password);
-    debugger;
     if(login == true){
       this.router.navigate(['stats']);
     }
