@@ -9,11 +9,13 @@ import { AuthGuard } from './auth.guard';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './authconfig.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StatusAtualComponent } from './status-atual/status-atual.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    StatusAtualComponent
   ],
   imports: [
     BrowserModule,

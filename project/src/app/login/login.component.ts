@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { BusyService } from '../Busy/busy.service';
 
@@ -10,7 +11,7 @@ import { BusyService } from '../Busy/busy.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private busy: BusyService) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private busy: BusyService, private router: Router) { }
   public loginForm: FormGroup;
   private userName: string;
   private password: string;
@@ -32,9 +33,13 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  login(){
+  async login(){
     this.busy.show();
-    this.auth.login(this.userName, this.password);
+    var login = await this.auth.login(this.userName, this.password);
+    debugger;
+    if(login == true){
+      this.router.navigate(['stats']);
+    }
     this.busy.hide();
   }
 
