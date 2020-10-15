@@ -1,3 +1,56 @@
 p {
     font-family: Lato;
   }
+
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content{
+  background: white;
+  margin: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.oneFlex{
+  flex: 1;
+}
+
+.twoFlex{
+  flex: 2;
+}
+
+.equipamentBox{
+  padding: 25px; 
+  width: 130px; 
+  text-align: center;
+}
+
+/* ------ Gauge ---------- */
+mwl-gauge {
+  flex: 1;
+  display: block;
+  padding: 10px;
+  background-color: #6B3E2B;
+  margin: 7px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+mwl-gauge > .gauge > .dial {
+  stroke: #53CF53;
+  stroke-width: 20;
+  fill: #53CF53;
+}
+mwl-gauge > .gauge > .value {
+  stroke: #53CF53;
+  stroke-width: 20;
+  fill: #53CF53;
+}
+mwl-gauge > .gauge > .value-text {
+  fill: #53CF53;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 0.8em;
+}

@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UserBarComponent } from './user-bar/user-bar.component';
 import { ChartsModule } from 'ng2-charts';
+import { GaugeModule } from 'angular-gauge';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ChartsModule } from 'ng2-charts';
     HttpClientModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    ChartsModule
+    ChartsModule,
+    GaugeModule.forRoot()
   ],
   providers: [
     AuthService, AuthGuard,
