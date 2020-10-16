@@ -23,12 +23,22 @@ export class AuthService {
     return localStorage.getItem('access_token') !==  null;
   }
 
+  public get userName(): string{
+    if(this.loggedIn){
+      return localStorage.getItem('user');
+    }
+    else{
+      this.logout();
+    }
+  }
+
   async login(UserName:string, Password:string) {
     this.busy.show()
     try{
       const param = Object.assign(new LoginEntity, { Username: UserName, Password: Password })
       const user = await this.http.post<LoginResponse>("http://seedingprecisionapi.azurewebsites.net/api/user/login", param).toPromise();
       if (!user || !user.token) { return false; }
+      localStorage.setItem('user', user.userName);
       localStorage.setItem('access_token', user.token);
       return true;
     }
