@@ -12,4 +12,8 @@ export class UserBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onClick(){
+    console.log("teste")
+  }
+
 }
