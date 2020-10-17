@@ -1,0 +1,21 @@
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .oneFlex{
+    flex: 1;
+  }
+
+  .content{
+    background: white;
+    margin: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .equipamentBox{
+    padding: 25px; 
+    width: 130px; 
+    text-align: center;
+  }

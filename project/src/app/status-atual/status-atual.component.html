@@ -1,75 +1,82 @@
-<div class="flex-container">
-  <div class="oneFlex content" style="padding: 25px;">
-    <strong>Equipamentos: 2</strong>
+<app-user-bar></app-user-bar>
+<app-equipament-header></app-equipament-header>
+
+<div class="flex-container" style="margin-bottom: 40px;">
+  <div class="oneFlex flex-container-collum">
+    <div class="side">
+      <strong>teste</strong>
+      <canvas baseChart width="800" height="200"
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"
+        [plugins]="lineChartPlugins">
+      </canvas>
+    </div>
+    <div class="side">
+      <strong>teste</strong>
+      <canvas baseChart width="800" height="200"
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"
+        [plugins]="lineChartPlugins">
+      </canvas>
+    </div>
   </div>
-  <div class="content equipamentBox">
-    <strong>Equipamento: <strong>2</strong></strong>
+  <div class="flex-container-collum" style="max-width: 622px;">
+    <div class="flex-container">
+      <div class="box">
+        <mwl-gauge
+        [max]="100"
+        [value]="gaugeValues[3]"
+        [animated]="true"
+        [animationDuration]="1.5">
+        </mwl-gauge>
+      </div>
+      <div class="box">
+        <mwl-gauge
+        [max]="100"
+        [value]="gaugeValues[3]"
+        [animated]="true"
+        [animationDuration]="1.5">
+        </mwl-gauge>
+      </div>
+      <div class="box">
+        <mwl-gauge
+        [max]="100"
+        [value]="gaugeValues[3]"
+        [animated]="true"
+        [animationDuration]="1.5">
+        </mwl-gauge>
+      </div>
+    </div>
+    <div class="flex-container">
+      <div class="box" style="height: 20px;">
+      </div>
+      <div class="box">
+        <mwl-gauge
+        [max]="100"
+        [value]="gaugeValues[3]"
+        [animated]="true"
+        [animationDuration]="1.5">
+        </mwl-gauge>
+      </div>
+      <div class="box">
+        <mwl-gauge
+        [max]="100"
+        [value]="gaugeValues[3]"
+        [animated]="true"
+        [animationDuration]="1.5">
+        </mwl-gauge>
+      </div>
+    </div>
   </div>
-  <div class="content equipamentBox">
-    <strong>Equipamentos: 2</strong>
-  </div>
-</div>
-<div class="flex-container">
-  <mwl-gauge
-    [max]="100"
-    [value]="gaugeValues[3]"
-    [animated]="true"
-    [animationDuration]="1.5"
-  >
-  </mwl-gauge>
-  <mwl-gauge
-    [max]="100"
-    [value]="gaugeValues[3]"
-    [animated]="true"
-    [animationDuration]="1.5"
-  >
-  </mwl-gauge>
-  <mwl-gauge
-    [max]="100"
-    [value]="gaugeValues[3]"
-    [animated]="true"
-    [animationDuration]="1.5"
-  >
-  </mwl-gauge>
-  <mwl-gauge
-    [max]="100"
-    [value]="gaugeValues[3]"
-    [animated]="true"
-    [animationDuration]="1.5"
-  >
-  </mwl-gauge>
-</div>
-<div class="flex-container">
-  <mwl-gauge
-    [max]="100"
-    [value]="gaugeValues[3]"
-    [animated]="true"
-    [animationDuration]="1.5"
-  >
-  </mwl-gauge>
-  <mwl-gauge
-    [max]="100"
-    [value]="gaugeValues[3]"
-    [animated]="true"
-    [animationDuration]="1.5"
-  >
-  </mwl-gauge>
-  <mwl-gauge
-    [max]="100"
-    [value]="gaugeValues[3]"
-    [animated]="true"
-    [animationDuration]="1.5"
-  >
-  </mwl-gauge>
-  <mwl-gauge
-    [max]="100"
-    [value]="gaugeValues[3]"
-    [animated]="true"
-    [animationDuration]="1.5"
-  >
-  </mwl-gauge>
 </div>
 <small><a href="https://www.npmjs.com/package/ng2-charts">Graficos Docs</a></small>
 <small>--------------------------------------</small>
 <small><a href="https://www.npmjs.com/package/angular-gauge">Gauge Docs</a></small>
-<app-user-bar></app-user-bar>

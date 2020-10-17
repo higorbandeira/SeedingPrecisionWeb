@@ -15,13 +15,15 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UserBarComponent } from './user-bar/user-bar.component';
 import { ChartsModule } from 'ng2-charts';
 import { GaugeModule } from 'angular-gauge';
+import { EquipamentHeaderComponent } from './equipament-header/equipament-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     StatusAtualComponent,
-    UserBarComponent
+    UserBarComponent,
+    EquipamentHeaderComponent
   ],
   imports: [
     BrowserModule,
