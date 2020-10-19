@@ -4,8 +4,8 @@
 <div class="flex-container" style="margin-bottom: 40px;">
   <div class="oneFlex flex-container-collum">
     <div class="side">
-      <strong>teste</strong>
-      <canvas baseChart width="800" height="200"
+      <strong>Humidade e Temperatura</strong>
+      <canvas baseChart width="770" height="150"
         [datasets]="lineChartData"
         [labels]="lineChartLabels"
         [options]="lineChartOptions"
@@ -17,9 +17,9 @@
     </div>
     <div class="side">
       <strong>teste</strong>
-      <canvas baseChart width="800" height="200"
-        [datasets]="lineChartData"
-        [labels]="lineChartLabels"
+      <canvas baseChart width="770" height="100"
+        [datasets]="lineChartDataTwo"
+        [labels]="lineChartLabelsTwo"
         [options]="lineChartOptions"
         [colors]="lineChartColors"
         [legend]="lineChartLegend"
@@ -28,51 +28,43 @@
       </canvas>
     </div>
   </div>
-  <div class="flex-container-collum" style="max-width: 622px;">
+  <div class="flex-container-collum" style="max-width: 622px; text-align: center; font-size: 40px; line-height: 46px;">
+    <strong>Ambiente</strong>
     <div class="flex-container">
-      <div class="box">
-        <mwl-gauge
-        [max]="100"
-        [value]="gaugeValues[3]"
-        [animated]="true"
-        [animationDuration]="1.5">
-        </mwl-gauge>
-      </div>
-      <div class="box">
-        <mwl-gauge
-        [max]="100"
-        [value]="gaugeValues[3]"
-        [animated]="true"
-        [animationDuration]="1.5">
-        </mwl-gauge>
-      </div>
-      <div class="box">
-        <mwl-gauge
-        [max]="100"
-        [value]="gaugeValues[3]"
-        [animated]="true"
-        [animationDuration]="1.5">
-        </mwl-gauge>
+      <div class="flex-container">
+        <div class="box" style="text-align: center;">
+          <strong style="font-size: 20px; line-height: 40px;">Humidade</strong>
+          <tr></tr>
+          <strong style="font-size: 60px; line-height: 90px;">70%</strong>
+        </div>
+        <div class="box" style="text-align: center;">
+          <strong style="font-size: 20px; line-height: 40px;">Luminosidade</strong>
+          <tr></tr>
+          <strong style="font-size: 60px; line-height: 90px;">60%</strong>
+        </div>
+        <div class="box" style="text-align: center;">
+          <strong style="font-size: 20px; line-height: 40px;">Temperatura</strong>
+          <tr></tr>
+          <strong style="font-size: 60px; line-height: 90px;">15°</strong>
+        </div>
       </div>
     </div>
+    <strong>Solo</strong>
     <div class="flex-container">
-      <div class="box" style="height: 20px;">
+      <div class="box" style="text-align: center;">
+        <strong style="font-size: 20px; line-height: 40px;">Humidade</strong>
+        <tr></tr>
+        <strong style="font-size: 60px; line-height: 90px;">70%</strong>
       </div>
-      <div class="box">
-        <mwl-gauge
-        [max]="100"
-        [value]="gaugeValues[3]"
-        [animated]="true"
-        [animationDuration]="1.5">
-        </mwl-gauge>
+      <div class="box" [style.background-color]="getpHColor()" style="text-align: center;">
+        <strong style="font-size: 20px; line-height: 40px;">pH</strong>
+        <tr></tr>
+        <strong style="font-size: 60px; line-height: 90px;">7</strong>
       </div>
-      <div class="box">
-        <mwl-gauge
-        [max]="100"
-        [value]="gaugeValues[3]"
-        [animated]="true"
-        [animationDuration]="1.5">
-        </mwl-gauge>
+      <div class="box" style="text-align: center;">
+        <strong style="font-size: 20px; line-height: 40px;">Temperatura</strong>
+        <tr></tr>
+        <strong style="font-size: 60px; line-height: 90px;">15°</strong>
       </div>
     </div>
   </div>

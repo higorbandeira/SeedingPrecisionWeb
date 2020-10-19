@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ChartDataSets, ChartOptions } from 'chart.js';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
 @Component({
@@ -7,21 +7,13 @@ import { Color, Label } from 'ng2-charts';
   templateUrl: './status-atual.component.html',
   styleUrls: ['./status-atual.component.css']
 })
-export class StatusAtualComponent implements OnInit, OnDestroy  {
-  percentageValue: (value: number) => string;
-
-  gaugeValues: any = {
-    3: 50,
-  };
-
-  interval: any;
-
-
+export class StatusAtualComponent implements OnInit  {
   // LINE CHART
   public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Humidade' },
+    { data: [55, 49, 70, 51, 26, 15, 80], label: 'Temperatura' },
   ];
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels: Label[] = ['12/10/2020', '13/10/2020', '14/10/2020', '15/10/2020', '16/10/2020', '17/10/2020', '18/10/2020'];
   public lineChartOptions: (ChartOptions) = {
     responsive: false,
   };
@@ -35,26 +27,26 @@ export class StatusAtualComponent implements OnInit, OnDestroy  {
   public lineChartType = 'line';
   public lineChartPlugins = [];
 
-  constructor() {
-    this.percentageValue = function (value: number): string {
-      return `${Math.round(value)} / ${this['max']}`;
-    };
-  }
+  // LINE CHART DAS DATAS DE COLETA
+  public lineChartDataTwo: ChartDataSets[] = [
+    { data: [1, 1, 1, 1, 1, 1, 1], label: 'Medições' },
+  ];
+  public lineChartLabelsTwo: Label[] = ['12/10/2020', '13/10/2020', '14/10/2020', '15/10/2020', '16/10/2020', '17/10/2020', '18/10/2020'];
 
-  ngOnInit(): void {
-    const updateValues = (): void => {
-      this.gaugeValues = {
-        3: Math.round(Math.random() * 100),
-      };
-    };
+  constructor() {  }
 
-    const INTERVAL: number = 5000;
+  ngOnInit(): void {  }
 
-    this.interval = setInterval(updateValues, INTERVAL);
-    updateValues();
-  }
+  getpHColor(){
+    var pH = 7;
 
-  ngOnDestroy(): void {
-    clearInterval(this.interval);
+    if(pH <= 3) { return "#E02629"; }
+    if(pH > 3 && pH <= 4) { return "#E76A30" }
+    if(pH > 4 && pH <= 5) { return "#F0963E" }
+    if(pH > 5 && pH <= 6) { return "#F5C533" }
+    if(pH > 6 && pH <= 7) { return "#A2C63E" }
+    if(pH > 7 && pH <= 8) { return "#196B67" }
+    if(pH > 8 && pH <= 9) { return "#385E9D" }
+    if(pH > 9) {return "#4D286E"}
   }
 }

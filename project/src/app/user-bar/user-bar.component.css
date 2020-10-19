@@ -64,6 +64,6 @@
   text-align: center;
 }
 
-.flex-item-right, .flex-item-left:hover {
+.item-footer-left:hover, .item-footer-right:hover {
   background-color: #4FC470;
 }
