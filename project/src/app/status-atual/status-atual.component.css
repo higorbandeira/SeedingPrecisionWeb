@@ -23,16 +23,26 @@
   border-radius: 15px;
   margin: 7px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-  max-width: 770px;
+  max-width: 500px;
 }
 
 .box{
-  width: 135px;
-  height: 130px;
+  width: 105px;
+  height: 100px;
   padding: 5px;
   background-color: white;
   border: #EFEFF1 solid 20px;
   margin: 7px;
   border-radius: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.boxTitle{
+  font-size: 15px; 
+  line-height: 20px;
+}
+
+.boxData{
+  font-size: 56px; 
+  line-height: 70px;
 }

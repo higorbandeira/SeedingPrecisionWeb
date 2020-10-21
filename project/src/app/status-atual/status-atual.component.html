@@ -5,7 +5,7 @@
   <div class="oneFlex flex-container-collum">
     <div class="side">
       <strong>Humidade e Temperatura</strong>
-      <canvas baseChart width="770" height="150"
+      <canvas baseChart width="500" height="150"
         [datasets]="lineChartData"
         [labels]="lineChartLabels"
         [options]="lineChartOptions"
@@ -17,7 +17,7 @@
     </div>
     <div class="side">
       <strong>teste</strong>
-      <canvas baseChart width="770" height="100"
+      <canvas baseChart width="500" height="100"
         [datasets]="lineChartDataTwo"
         [labels]="lineChartLabelsTwo"
         [options]="lineChartOptions"
@@ -28,43 +28,43 @@
       </canvas>
     </div>
   </div>
-  <div class="flex-container-collum" style="max-width: 622px; text-align: center; font-size: 40px; line-height: 46px;">
+  <div class="flex-container-collum" style="max-width: 550px; text-align: center; font-size: 30px; line-height: 36px;">
     <strong>Ambiente</strong>
     <div class="flex-container">
       <div class="flex-container">
         <div class="box" style="text-align: center;">
-          <strong style="font-size: 20px; line-height: 40px;">Humidade</strong>
+          <strong class="boxTitle">Humidade</strong>
           <tr></tr>
-          <strong style="font-size: 60px; line-height: 90px;">70%</strong>
+          <strong class="boxData">70%</strong>
         </div>
         <div class="box" style="text-align: center;">
-          <strong style="font-size: 20px; line-height: 40px;">Luminosidade</strong>
+          <strong class="boxTitle">Luminosidade</strong>
           <tr></tr>
-          <strong style="font-size: 60px; line-height: 90px;">60%</strong>
+          <strong class="boxData">60%</strong>
         </div>
         <div class="box" style="text-align: center;">
-          <strong style="font-size: 20px; line-height: 40px;">Temperatura</strong>
+          <strong class="boxTitle">Temperatura</strong>
           <tr></tr>
-          <strong style="font-size: 60px; line-height: 90px;">15°</strong>
+          <strong class="boxData">15°</strong>
         </div>
       </div>
     </div>
     <strong>Solo</strong>
     <div class="flex-container">
       <div class="box" style="text-align: center;">
-        <strong style="font-size: 20px; line-height: 40px;">Humidade</strong>
+        <strong class="boxTitle">Humidade</strong>
         <tr></tr>
-        <strong style="font-size: 60px; line-height: 90px;">70%</strong>
+        <strong class="boxData">70%</strong>
       </div>
       <div class="box" [style.background-color]="getpHColor()" style="text-align: center;">
-        <strong style="font-size: 20px; line-height: 40px;">pH</strong>
+        <strong class="boxTitle">pH</strong>
         <tr></tr>
-        <strong style="font-size: 60px; line-height: 90px;">7</strong>
+        <strong class="boxData">7</strong>
       </div>
       <div class="box" style="text-align: center;">
-        <strong style="font-size: 20px; line-height: 40px;">Temperatura</strong>
+        <strong class="boxTitle">Temperatura</strong>
         <tr></tr>
-        <strong style="font-size: 60px; line-height: 90px;">15°</strong>
+        <strong class="boxData">15°</strong>
       </div>
     </div>
   </div>
