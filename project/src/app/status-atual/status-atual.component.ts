@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { DataServiceService, StatusAtual } from '../data-service.service';
 
 @Component({
   selector: 'app-status-atual',
@@ -33,13 +34,15 @@ export class StatusAtualComponent implements OnInit  {
   ];
   public lineChartLabelsTwo: Label[] = ['12/10/2020', '13/10/2020', '14/10/2020', '15/10/2020', '16/10/2020', '17/10/2020', '18/10/2020'];
 
-  constructor() {  }
+  constructor(private service: DataServiceService) {  }
 
-  ngOnInit(): void {  }
+  async ngOnInit(): Promise<void> {
+    await this.service.loadDataStatusAtual();
+    await this.service.selectEquipament(0);
+  }
 
-  getpHColor(){
-    var pH = 7;
-
+  getpHColor(pH: number){
+    //var pH = 7;
     if(pH <= 3) { return "#E02629"; }
     if(pH > 3 && pH <= 4) { return "#E76A30" }
     if(pH > 4 && pH <= 5) { return "#F0963E" }

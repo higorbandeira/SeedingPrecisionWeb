@@ -14,8 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UserBarComponent } from './user-bar/user-bar.component';
 import { ChartsModule } from 'ng2-charts';
-import { GaugeModule } from 'angular-gauge';
 import { EquipamentHeaderComponent } from './equipament-header/equipament-header.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ModalComponent } from './equipament-header/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EquipamentHeaderComponent } from './equipament-header/equipament-header
     LoginComponent,
     StatusAtualComponent,
     UserBarComponent,
-    EquipamentHeaderComponent
+    EquipamentHeaderComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ import { EquipamentHeaderComponent } from './equipament-header/equipament-header
     BrowserAnimationsModule,
     MatSnackBarModule,
     ChartsModule,
-    GaugeModule.forRoot()
+    MatDialogModule
   ],
   providers: [
     AuthService, AuthGuard,

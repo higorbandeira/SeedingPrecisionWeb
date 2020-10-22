@@ -1,0 +1,18 @@
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.box{
+width: 20px;
+height: 20px;
+padding: 2px;
+background-color: white;
+border: #EFEFF1 solid 2px;
+color: black;
+margin: 7px;
+border-radius: 15px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}

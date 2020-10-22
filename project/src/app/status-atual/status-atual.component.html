@@ -35,17 +35,17 @@
         <div class="box" style="text-align: center;">
           <strong class="boxTitle">Humidade</strong>
           <tr></tr>
-          <strong class="boxData">70%</strong>
+          <strong class="boxData">{{service.statusSelected?.humidAmbiente?.value}}%</strong>
         </div>
         <div class="box" style="text-align: center;">
           <strong class="boxTitle">Luminosidade</strong>
           <tr></tr>
-          <strong class="boxData">60%</strong>
+          <strong class="boxData">{{service.statusSelected?.luminosidade?.value}}</strong>
         </div>
         <div class="box" style="text-align: center;">
           <strong class="boxTitle">Temperatura</strong>
           <tr></tr>
-          <strong class="boxData">15°</strong>
+          <strong class="boxData">{{service.statusSelected?.tempAmbiente?.value}}°</strong>
         </div>
       </div>
     </div>
@@ -54,17 +54,17 @@
       <div class="box" style="text-align: center;">
         <strong class="boxTitle">Humidade</strong>
         <tr></tr>
-        <strong class="boxData">70%</strong>
+        <strong class="boxData">{{service.statusSelected?.humidSolo?.value}}%</strong>
       </div>
-      <div class="box" [style.background-color]="getpHColor()" style="text-align: center;">
+      <div class="box" [style.background-color]="getpHColor(statusSelected?.tempAmbiente?.value)" style="text-align: center;">
         <strong class="boxTitle">pH</strong>
         <tr></tr>
-        <strong class="boxData">7</strong>
+        <strong class="boxData">{{service.statusSelected?.pH?.value}}</strong>
       </div>
       <div class="box" style="text-align: center;">
         <strong class="boxTitle">Temperatura</strong>
         <tr></tr>
-        <strong class="boxData">15°</strong>
+        <strong class="boxData">{{service.statusSelected?.tempSolo?.value}}°</strong>
       </div>
     </div>
   </div>
