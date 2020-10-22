@@ -17,7 +17,8 @@ export class DataServiceService {
   async loadDataStatusAtual(){
     this.busy.show()
     try{
-      this.listStatus = await this.http.get<StatusAtual[]>("https://localhost:5001/api/loadData").toPromise();
+      this.listStatus = await this.http.get<StatusAtual[]>("http://seedingprecisionapi.azurewebsites.net/api/loadData").toPromise();
+      //this.listStatus = await this.http.get<StatusAtual[]>("https://localhost:5001/api/loadData").toPromise();
       return this.listStatus
     }
     catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
