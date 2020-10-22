@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DataServiceService } from '../data-service.service';
 import { ModalComponent } from './modal/modal.component';
 
 @Component({
@@ -9,10 +10,9 @@ import { ModalComponent } from './modal/modal.component';
 })
 export class EquipamentHeaderComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, public service: DataServiceService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {  }
 
   openDialog() {
     this.dialog.open(ModalComponent);

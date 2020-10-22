@@ -56,7 +56,7 @@
         <tr></tr>
         <strong class="boxData">{{service.statusSelected?.humidSolo?.value}}%</strong>
       </div>
-      <div class="box" [style.background-color]="getpHColor(statusSelected?.tempAmbiente?.value)" style="text-align: center;">
+      <div class="box" [style.background-color]="getpHColor(service.statusSelected?.pH?.value)" style="text-align: center;">
         <strong class="boxTitle">pH</strong>
         <tr></tr>
         <strong class="boxData">{{service.statusSelected?.pH?.value}}</strong>

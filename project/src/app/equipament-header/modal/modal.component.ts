@@ -8,7 +8,7 @@ import { DataServiceService, StatusAtual } from 'src/app/data-service.service';
 })
 export class ModalComponent implements OnInit {
 
-  constructor(private service: DataServiceService) { }
+  constructor(public service: DataServiceService) { }
 
   ngOnInit(): void {  }
 

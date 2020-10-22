@@ -34,7 +34,7 @@ export class StatusAtualComponent implements OnInit  {
   ];
   public lineChartLabelsTwo: Label[] = ['12/10/2020', '13/10/2020', '14/10/2020', '15/10/2020', '16/10/2020', '17/10/2020', '18/10/2020'];
 
-  constructor(private service: DataServiceService) {  }
+  constructor(public service: DataServiceService) {  }
 
   async ngOnInit(): Promise<void> {
     await this.service.loadDataStatusAtual();
