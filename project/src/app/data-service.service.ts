@@ -24,9 +24,9 @@ export class DataServiceService {
     finally {this.busy.hide()};
   }
 
-  async selectEquipament(index: number){
-    if(index == null || index == undefined || index < 0){ index = 0 }
-    this.statusSelected = this.listStatus[index];
+  async selectEquipament(id: string){
+    if(id == null || id == undefined){ id = this.listStatus[0].id }
+    this.statusSelected = this.listStatus.filter(x => x.id == id).reduce((p, c) => c);
   }
 
 }

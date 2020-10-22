@@ -2,11 +2,10 @@
   <h1 mat-dialog-title>Selecione o equipamento:</h1>
   <div mat-dialog-content>
     <div class="flex-container">
-      <div class="box" style="text-align: center;" (click)="">
-        <strong>1</strong>
-      </div>
-      <div class="box" style="text-align: center;">
-        <strong>2</strong>
+      <div *ngFor="let item of service.listStatus">
+        <div class="box" style="text-align: center;" (click)="onSelectEquipament(item)">
+          <strong>{{item.id}}</strong>
+        </div>
       </div>
     </div>
   </div>

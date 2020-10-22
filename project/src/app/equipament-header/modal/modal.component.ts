@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataServiceService, StatusAtual } from 'src/app/data-service.service';
 
 @Component({
   selector: 'app-modal',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: DataServiceService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  }
+
+  onSelectEquipament(item: StatusAtual){
+    this.service.selectEquipament(item.id);
   }
 
 }
