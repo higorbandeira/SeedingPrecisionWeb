@@ -13,17 +13,29 @@ export class DataServiceService {
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar, private busy: BusyService) { }
   public listStatus: StatusAtual[]
   public statusSelected: StatusAtual
+  public selectStatusHistory: StatusAtual[];
 
   async loadDataStatusAtual(){
     this.busy.show()
     try{
       this.listStatus = await this.http.get<StatusAtual[]>("http://seedingprecisionapi.azurewebsites.net/api/loadData").toPromise();
-      //this.listStatus = await this.http.get<StatusAtual[]>("https://localhost:5001/api/loadData").toPromise();
       return this.listStatus
     }
     catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
     finally {this.busy.hide()};
   }
+  
+  async loadDataStatuHistory(numberofTable){
+    this.busy.show()
+    try{
+      this.selectStatusHistory = await this.http.get<StatusAtual[]>("http://seedingprecisionapi.azurewebsites.net//apiHistory/listStatusHistory?NumberOfTable="+numberofTable).toPromise();      
+      return this.selectStatusHistory
+    }
+    catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
+    finally {this.busy.hide()};
+  }
+
+
 
   async selectEquipament(id: string){
     if(id == null || id == undefined){ id = this.listStatus[0].id }
@@ -41,6 +53,7 @@ export class StatusAtual{
   tempAmbiente: TempAmbiente
   tempSolo: TempSolo
   pH: PH
+  data: Date;
 }
 
 export class Metadata
