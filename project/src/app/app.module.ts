@@ -17,6 +17,7 @@ import { ChartsModule } from 'ng2-charts';
 import { EquipamentHeaderComponent } from './equipament-header/equipament-header.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ModalComponent } from './equipament-header/modal/modal.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ModalComponent } from './equipament-header/modal/modal.component';
     StatusAtualComponent,
     UserBarComponent,
     EquipamentHeaderComponent,
-    ModalComponent
+    ModalComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
