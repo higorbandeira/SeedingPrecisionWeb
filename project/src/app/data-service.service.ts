@@ -15,6 +15,8 @@ export class DataServiceService {
   public statusSelected: StatusAtual
   public selectStatusHistory: StatusAtual[];
 
+  public periodDisabled: boolean = true;
+
   //URL: string = "http://seedingprecisionapi.azurewebsites.net";
   URL: string = "https://localhost:5001/";
 

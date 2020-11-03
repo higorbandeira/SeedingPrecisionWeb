@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { DataServiceService, StatusAtual } from '../data-service.service';
+import { EquipamentHeaderComponent } from '../equipament-header/equipament-header.component';
 
 @Component({
   selector: 'app-history',
@@ -38,7 +39,7 @@ export class HistoryComponent implements OnInit  {
   constructor(public service: DataServiceService) {  }
 
   async ngOnInit(): Promise<void> {
-    await this.service.loadDataStatuHistory(1);
+    this.service.periodDisabled = false;
   }
 
   getpHColor(pH: number){

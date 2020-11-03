@@ -13,7 +13,7 @@
   <div class="content equipamentBox">
     <mat-form-field>
       <mat-label>Periodo:</mat-label>
-      <mat-date-range-input [rangePicker]="picker" [disabled]="periodDisabled">
+      <mat-date-range-input [rangePicker]="picker" [disabled]="service.periodDisabled">
         <input matStartDate formControlName="start" placeholder="Start date">
         <input matEndDate formControlName="end" placeholder="End date">
       </mat-date-range-input>

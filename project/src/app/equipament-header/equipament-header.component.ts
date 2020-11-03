@@ -13,8 +13,7 @@ export class EquipamentHeaderComponent implements OnInit {
   constructor(public service: DataServiceService, private fb: FormBuilder) { }
   public searchForm: FormGroup;
   private id: string;
-  public periodDisabled: boolean = true;
-
+  
   async ngOnInit() {
     await this.service.loadDataStatusAtual();
     this.id = this.service.listStatus[0].id;
