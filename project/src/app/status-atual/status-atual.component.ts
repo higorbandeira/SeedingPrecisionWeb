@@ -38,7 +38,7 @@ export class StatusAtualComponent implements OnInit  {
 
   async ngOnInit(): Promise<void> {
     //await this.service.selectEquipament(undefined);
-    this.service.periodDisabled = false;
+    this.service.periodDisabled = true;
   }
 
   getpHColor(pH: number){
