@@ -15,10 +15,13 @@ export class DataServiceService {
   public statusSelected: StatusAtual
   public selectStatusHistory: StatusAtual[];
 
+  //URL: string = "http://seedingprecisionapi.azurewebsites.net";
+  URL: string = "https://localhost:5001/";
+
   async loadDataStatusAtual(){
     this.busy.show()
     try{
-      this.listStatus = await this.http.get<StatusAtual[]>("http://seedingprecisionapi.azurewebsites.net/api/loadData").toPromise();
+      this.listStatus = await this.http.get<StatusAtual[]>(this.URL + "api/loadData").toPromise();
       return this.listStatus
     }
     catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
@@ -28,7 +31,7 @@ export class DataServiceService {
   async loadDataStatuHistory(numberofTable){
     this.busy.show()
     try{
-      this.selectStatusHistory = await this.http.get<StatusAtual[]>("http://seedingprecisionapi.azurewebsites.net//apiHistory/listStatusHistory?NumberOfTable="+numberofTable).toPromise();      
+      this.selectStatusHistory = await this.http.get<StatusAtual[]>(this.URL + "api/listStatusHistory/" + numberofTable).toPromise();      
       return this.selectStatusHistory
     }
     catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
@@ -38,7 +41,7 @@ export class DataServiceService {
 
 
   async selectEquipament(id: string){
-    if(id == null || id == undefined){ id = this.listStatus[0].id }
+    if(id == null || id == undefined || id == ""){ id = this.listStatus[0].id }
     this.statusSelected = this.listStatus.filter(x => x.id == id).reduce((p, c) => c);
   }
 
