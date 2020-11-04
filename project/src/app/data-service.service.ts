@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { isNullOrUndefined } from 'util';
 import { BusyService } from './Busy/busy.service';
 
 @Injectable({
@@ -30,10 +29,10 @@ export class DataServiceService {
     finally {this.busy.hide()};
   }
   
-  async loadDataStatuHistory(numberofTable){
+  async loadDataStatuHistory(id: string){
     this.busy.show()
     try{
-      this.selectStatusHistory = await this.http.get<StatusAtual[]>(this.URL + "api/listStatusHistory/" + numberofTable).toPromise();      
+      this.selectStatusHistory = await this.http.get<StatusAtual[]>(this.URL + "api/listStatusHistory/" + id).toPromise();      
       return this.selectStatusHistory
     }
     catch (error) { console.error(error); this._snackBar.open(error.error); return false; }

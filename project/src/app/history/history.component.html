@@ -4,7 +4,7 @@
 <div class="flex-container" style="margin-bottom: 40px;">
   <div class="oneFlex flex-container-collum">
     <div class="side">
-      <strong>Humidade e Temperatura</strong>
+      <strong>Umidade e Temperatura</strong>
       <canvas baseChart width="500" height="150"
         [datasets]="lineChartData"
         [labels]="lineChartLabels"
@@ -14,61 +14,39 @@
         [chartType]="lineChartType"
         [plugins]="lineChartPlugins">
       </canvas>
+      <div class="side">
+        <strong>teste</strong>
+      </div>
     </div>
-    <div class="side">
-      <strong>teste</strong>
-      <canvas baseChart width="500" height="100"
-        [datasets]="lineChartDataTwo"
-        [labels]="lineChartLabelsTwo"
-        [options]="lineChartOptions"
-        [colors]="lineChartColors"
-        [legend]="lineChartLegend"
-        [chartType]="lineChartType"
-        [plugins]="lineChartPlugins">
-      </canvas>
-    </div>
-  </div>
-  <div class="flex-container-collum" style="max-width: 550px; text-align: center; font-size: 30px; line-height: 36px;">
-    <strong>Ambiente</strong>
-    <div class="flex-container">
+    <div class="flex-container-collum" style="max-width: 550px; text-align: center; font-size: 30px; line-height: 36px;">
+      <strong>Ambiente</strong>
+      <div class="flex-container">
+        <div class="flex-container">
+          <div class="box" style="text-align: center;">
+            <strong class="boxTitle">Humidade</strong>
+            <tr></tr>
+          </div>
+          <div class="box" style="text-align: center;">
+            <strong class="boxTitle">Luminosidade</strong>
+            <tr></tr>
+          </div>
+          <div class="box" style="text-align: center;">
+            <strong class="boxTitle">Temperatura</strong>
+            <tr></tr>
+          </div>
+        </div>
+      </div>
+      <strong>Solo</strong>
       <div class="flex-container">
         <div class="box" style="text-align: center;">
           <strong class="boxTitle">Humidade</strong>
           <tr></tr>
-          <strong class="boxData">{{service.statusSelected?.humidAmbiente?.value}}%</strong>
-        </div>
-        <div class="box" style="text-align: center;">
-          <strong class="boxTitle">Luminosidade</strong>
-          <tr></tr>
-          <strong class="boxData">{{service.statusSelected?.luminosidade?.value}}</strong>
         </div>
         <div class="box" style="text-align: center;">
           <strong class="boxTitle">Temperatura</strong>
           <tr></tr>
-          <strong class="boxData">{{service.statusSelected?.tempAmbiente?.value}}°</strong>
         </div>
-      </div>
-    </div>
-    <strong>Solo</strong>
-    <div class="flex-container">
-      <div class="box" style="text-align: center;">
-        <strong class="boxTitle">Humidade</strong>
-        <tr></tr>
-        <strong class="boxData">{{service.statusSelected?.humidSolo?.value}}%</strong>
-      </div>
-      <div class="box" [style.background-color]="getpHColor(service.statusSelected?.pH?.value)" style="text-align: center;">
-        <strong class="boxTitle">pH</strong>
-        <tr></tr>
-        <strong class="boxData">{{service.statusSelected?.pH?.value}}</strong>
-      </div>
-      <div class="box" style="text-align: center;">
-        <strong class="boxTitle">Temperatura</strong>
-        <tr></tr>
-        <strong class="boxData">{{service.statusSelected?.tempSolo?.value}}°</strong>
       </div>
     </div>
   </div>
 </div>
-<small><a href="https://www.npmjs.com/package/ng2-charts">Graficos Docs</a></small>
-<small>--------------------------------------</small>
-<small><a href="https://www.npmjs.com/package/angular-gauge">Gauge Docs</a></small>

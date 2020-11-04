@@ -16,14 +16,14 @@ export class EquipamentHeaderComponent implements OnInit {
   
   async ngOnInit() {
     await this.service.loadDataStatusAtual();
-    this.id = this.service.listStatus[0].id;
+    await this.OnDataInit();
+    this.id = this.service.statusSelected.id;
     this.searchForm = this.fb.group({
-      selectedValue: [this.service.listStatus[0].id],
+      selectedValue: [this.service.statusSelected.id],
       start: new FormControl(),
       end: new FormControl()
     });
     this.OnChanges();
-    await this.OnDataInit();
   }
 
   private async OnChanges() {
