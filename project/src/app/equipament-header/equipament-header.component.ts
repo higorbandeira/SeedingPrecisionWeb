@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { DataServiceService } from '../data-service.service';
-import { ModalComponent } from './modal/modal.component';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { DataServiceService, StatusAtual } from '../data-service.service';
 
 @Component({
   selector: 'app-equipament-header',
@@ -9,13 +8,32 @@ import { ModalComponent } from './modal/modal.component';
   styleUrls: ['./equipament-header.component.css']
 })
 export class EquipamentHeaderComponent implements OnInit {
+  selectedValue: StatusAtual;
 
-  constructor(public dialog: MatDialog, public service: DataServiceService) { }
-
-  ngOnInit(): void {  }
-
-  openDialog() {
-    this.dialog.open(ModalComponent);
+  constructor(public service: DataServiceService, private fb: FormBuilder) { }
+  public searchForm: FormGroup;
+  private id: string;
+  
+  async ngOnInit() {
+    await this.service.loadDataStatusAtual();
+    await this.OnDataInit();
+    this.id = this.service.statusSelected.id;
+    this.searchForm = this.fb.group({
+      selectedValue: [this.service.statusSelected.id],
+      start: new FormControl(),
+      end: new FormControl()
+    });
+    this.OnChanges();
   }
 
+  private async OnChanges() {
+    this.searchForm.valueChanges.subscribe(async value => {
+      this.id = value.selectedValue;
+      await this.OnDataInit();
+    });
+  }
+
+ private async OnDataInit() {
+    await this.service.selectEquipament(this.id);
+ }
 }

@@ -37,8 +37,8 @@ export class StatusAtualComponent implements OnInit  {
   constructor(public service: DataServiceService) {  }
 
   async ngOnInit(): Promise<void> {
-    await this.service.loadDataStatusAtual();
-    await this.service.selectEquipament(undefined);
+    //await this.service.selectEquipament(undefined);
+    this.service.periodDisabled = true;
   }
 
   getpHColor(pH: number){

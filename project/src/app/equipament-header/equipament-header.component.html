@@ -1,9 +1,25 @@
-<div class="flex-container">
-    <div class="oneFlex content" style="padding: 25px;">
-      <strong>Equipamento: {{service.statusSelected?.id}}</strong>
-    </div>
-    <div class="content equipamentBox" (click)="openDialog()">
-      <strong>Equipamentos Conectados:</strong>
-      <strong class="number">{{service.listStatus?.length}}</strong>
-    </div>
+
+<form *ngIf="searchForm" class="searchForm" [formGroup]="searchForm">
+  <div class="oneFlex content">
+    <strong style="margin-left: 15px;">Selecione o equipamento:</strong>
+    <mat-form-field style="margin-left: 15px;">
+      <mat-select formControlName="selectedValue">
+        <mat-option *ngFor="let item of service.listStatus" [value]="item.id">
+          <span>{{item.id}}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
+  <div class="content equipamentBox">
+    <mat-form-field>
+      <mat-label>Periodo:</mat-label>
+      <mat-date-range-input [rangePicker]="picker" [disabled]="service.periodDisabled">
+        <input matStartDate formControlName="start" placeholder="Start date">
+        <input matEndDate formControlName="end" placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+  </div>
+</form>
+  

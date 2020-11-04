@@ -16,8 +16,10 @@ import { UserBarComponent } from './user-bar/user-bar.component';
 import { ChartsModule } from 'ng2-charts';
 import { EquipamentHeaderComponent } from './equipament-header/equipament-header.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { ModalComponent } from './equipament-header/modal/modal.component';
 import { HistoryComponent } from './history/history.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,6 @@ import { HistoryComponent } from './history/history.component';
     StatusAtualComponent,
     UserBarComponent,
     EquipamentHeaderComponent,
-    ModalComponent,
     HistoryComponent
   ],
   imports: [
@@ -38,7 +39,10 @@ import { HistoryComponent } from './history/history.component';
     BrowserAnimationsModule,
     MatSnackBarModule,
     ChartsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     AuthService, AuthGuard,

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { BusyService } from './Busy/busy.service';
+import { DataServiceService } from './data-service.service';
 
 export class LoginResponse{
   token: string
@@ -17,7 +18,7 @@ export class LoginEntity{
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar, private busy: BusyService) { }
+  constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar, private busy: BusyService, private dataService: DataServiceService) { }
 
   public get loggedIn(): boolean{
     return localStorage.getItem('access_token') !==  null;
@@ -34,10 +35,10 @@ export class AuthService {
 
   async login(UserName:string, Password:string) {
     this.busy.show()
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    //const proxyurl = "https://cors-anywhere.herokuapp.com/";
     try{
       const param = Object.assign(new LoginEntity, { Username: UserName, Password: Password })
-      const user = await this.http.post<LoginResponse>(proxyurl+"http://seedingprecisionapi.azurewebsites.net/api/user/login", param).toPromise();
+      const user = await this.http.post<LoginResponse>(this.dataService.URL +"api/user/login", param).toPromise();
       if (!user || !user.token) { return false; }
       localStorage.setItem('user', user.userName);
       localStorage.setItem('access_token', user.token);
