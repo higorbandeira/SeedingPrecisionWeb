@@ -1,14 +1,9 @@
 <app-user-bar></app-user-bar>
 <app-equipament-header></app-equipament-header>
 
+<div>{{this.service.test}}</div>
 <div class="flex-container" style="margin-bottom: 40px;">
   <div class="oneFlex flex-container-collum">
-    <div >
-      <button (click)="getExternalAPI()"></button>
-      <div *ngIf="n!=null">
-        {{n}}
-      </div>
-    </div>
     <div class="side">
       <strong>Umidade e Temperatura</strong>
       <canvas baseChart width="500" height="150"

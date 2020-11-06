@@ -38,7 +38,7 @@ export class DataServiceService {
    async getExternalAPI(){
     this.busy.show()  
     try{      
-      this.test = await this.http.get(this.URLeX+"?format=j1").toPromise();
+      this.test = await this.http.get(this.URLeX+"são+bernardo+do+campo?format=j1").toPromise();
       
       return this.test;    
     }

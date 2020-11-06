@@ -33,7 +33,6 @@ export class EquipamentHeaderComponent implements OnInit {
   
 
   private async OnChanges() {
-    debugger;
     this.searchForm.valueChanges.subscribe(async value => {
       this.id = value.selectedValue;
       this.startDate= value.start;

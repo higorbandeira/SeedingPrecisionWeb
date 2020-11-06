@@ -40,13 +40,8 @@ export class StatusAtualComponent implements OnInit  {
     //await this.service.selectEquipament(undefined);
     this.service.periodDisabled = true;
     let aux;
-    aux = this.service.getExternalAPI();
+    this.service.getExternalAPI();
     
-    debugger;
-    this.service.test;
-  }
-
-  async getExternalAPI() {
 
   }
 
