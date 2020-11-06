@@ -16,15 +16,31 @@ export class DataServiceService {
   public startDate:Date;
   public endDate:Date;
   public periodDisabled: boolean = true;
+  public test;
+  public inscricaoObservable = {}
+  public valoresRecebidos:any[]
 
   //URL: string = "http://seedingprecisionapi.azurewebsites.net";
   URL: string = "https://localhost:5001/";
+  URLeX: string = "https://cors-anywhere.herokuapp.com/http://wttr.in/";
 
   async loadDataStatusAtual(){
     this.busy.show()
     try{
       this.listStatus = await this.http.get<StatusAtual[]>(this.URL + "api/loadData").toPromise();
       return this.listStatus
+    }
+    catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
+    finally {this.busy.hide()};
+  }
+
+
+   async getExternalAPI(){
+    this.busy.show()  
+    try{      
+      this.test = await this.http.get(this.URLeX+"?format=j1").toPromise();
+      
+      return this.test;    
     }
     catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
     finally {this.busy.hide()};
@@ -36,7 +52,6 @@ export class DataServiceService {
       this.endDate = this.endDate==undefined?null:this.endDate ;
       this.startDate = this.startDate==undefined?null:this.startDate ;
       this.selectStatusHistory = await this.http.post<StatusHistory>(this.URL +"api/listStatusHistory?NumberOfTable", {NumberOfTable:id , StartDate:this.startDate, EndDate:this.endDate}).toPromise();      
-      debugger;
       return this.selectStatusHistory
     }
     catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
@@ -59,11 +74,14 @@ export class DataServiceService {
       this.endDate=endDate;
     }
   }
-
-
 }
 
-
+export class PrevisãoDoTempo{
+  current_condition:[]
+  nearest_area:[]
+  request:[]
+  weather:[]
+}
 export class StatusAtual{
   id: string
   type: string
