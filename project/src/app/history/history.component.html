@@ -1,10 +1,10 @@
 <app-user-bar></app-user-bar>
 <app-equipament-header></app-equipament-header>
-
-<div class="flex-container" style="margin-bottom: 40px;">
+<div class="padding-left-20"><button class="button" (click)="OnChanges()">Atualizar</button></div>
+<div class="flex-container" style="margin-bottom: 40px;"> 
   <div class="oneFlex flex-container-collum">
-    <div class="side">
-      <strong>Temperatura Ambiente Media/Temperatura do Solo Media</strong>
+    <div class="side">      
+      <strong>Temperatura Ambiente Media/Temperatura do Solo Media (ºc)</strong>
       <canvas baseChart width="500" height="150"
         [datasets]="lineChartDataTemperatura"
         [labels]="lineChartLabelsTemperatura"
@@ -13,12 +13,12 @@
         [legend]="lineChartLegendTemperatura"
         [chartType]="lineChartTypeTemperatura"
         [plugins]="lineChartPluginsTemperatura">
-      </canvas>
-    </div>
+      </canvas>     
+    </div>    
   </div>
   <div class="oneFlex flex-container-collum">
     <div class="side">
-      <strong>Umidade Ambiente /Umidade do Solo Media</strong>
+      <strong>Umidade Ambiente /Umidade do Solo Media (%)</strong>
       <canvas baseChart width="500" height="150"
         [datasets]="lineChartDataUmidade"
         [labels]="lineChartLabelsUmidade"
@@ -30,4 +30,33 @@
       </canvas>
     </div>
   </div>
+  <div class="oneFlex flex-container-collum">
+    <div class="side">
+      <strong>PH Média</strong>
+      <canvas baseChart width="500" height="150"
+        [datasets]="lineChartDataPH"
+        [labels]="lineChartLabelsPH"
+        [options]="lineChartOptionsPH"
+        [colors]="lineChartColorsPH"
+        [legend]="lineChartLegendPH"
+        [chartType]="lineChartTypePH"
+        [plugins]="lineChartPluginsPH">
+      </canvas>
+    </div>
+  </div>
+  <div class="oneFlex flex-container-collum">
+    <div class="side">
+      <strong>Luminosidade Média</strong>
+      <canvas baseChart width="500" height="150"
+        [datasets]="lineChartDataLuminosidade"
+        [labels]="lineChartLabelsLuminosidade"
+        [options]="lineChartOptionsLuminosidade"
+        [colors]="lineChartColorsLuminosidade"
+        [legend]="lineChartLegendLuminosidade"
+        [chartType]="lineChartTypeLuminosidade"
+        [plugins]="lineChartPluginsLuminosidade">
+      </canvas>
+    </div>
+  </div>
 </div>
+

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-
+import { Router } from '@angular/router';
 import { DataServiceService,  StatusAtual } from '../data-service.service';
 
 @Component({
@@ -11,9 +11,12 @@ import { DataServiceService,  StatusAtual } from '../data-service.service';
 export class EquipamentHeaderComponent implements OnInit {
   selectedValue: StatusAtual;
 
-  constructor(public service: DataServiceService, private fb: FormBuilder) { }
+
+  constructor(public service: DataServiceService, private fb: FormBuilder, private router:Router) { }
   public searchForm: FormGroup;
   private id: string;
+  private startDate:Date;
+  private endDate:Date;
   
   
   async ngOnInit() {
@@ -25,22 +28,22 @@ export class EquipamentHeaderComponent implements OnInit {
       start: new FormControl(),
       end: new FormControl()
     });
-    debugger;
-
-    await this.service.loadDataStatuHistory(this.service.statusSelected.id,this.searchForm.value.start,this.searchForm.value.end);
     this.OnChanges();
   }
   
 
   private async OnChanges() {
+    debugger;
     this.searchForm.valueChanges.subscribe(async value => {
       this.id = value.selectedValue;
-      await this.OnDataInit();
+      this.startDate= value.start;
+      this.endDate = value.end;
+      await this.OnDataInit();     
     });
   }
-
   private async OnDataInit() {
     await this.service.selectEquipament(this.id);
-
- }
+    await this.service.selectStartDate(this.startDate);
+    await this.service.selectEndDate(this.endDate);
+  }
 }

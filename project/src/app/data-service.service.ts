@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Data, Router } from '@angular/router';
@@ -13,7 +13,8 @@ export class DataServiceService {
   public listStatus: StatusAtual[]
   public statusSelected: StatusAtual
   public selectStatusHistory: StatusHistory;
-
+  public startDate:Date;
+  public endDate:Date;
   public periodDisabled: boolean = true;
 
   //URL: string = "http://seedingprecisionapi.azurewebsites.net";
@@ -29,13 +30,12 @@ export class DataServiceService {
     finally {this.busy.hide()};
   }
   
-  async loadDataStatuHistory(id: string, StartDate:Date, EndDate:Date){
+  async loadDataStatuHistory(id: string){
     this.busy.show()
     try{
-      debugger;
-      let startDate = StartDate?StartDate.toString():"";
-      let endDate =EndDate?EndDate.toString():"";
-      this.selectStatusHistory = await this.http.get<StatusHistory>(this.URL + "api/listStatusHistory?NumberOfTable=" + id+"&StartDate="+startDate+"&EndDate="+endDate).toPromise();      
+      this.endDate = this.endDate==undefined?null:this.endDate ;
+      this.startDate = this.startDate==undefined?null:this.startDate ;
+      this.selectStatusHistory = await this.http.post<StatusHistory>(this.URL +"api/listStatusHistory?NumberOfTable", {NumberOfTable:id , StartDate:this.startDate, EndDate:this.endDate}).toPromise();      
       debugger;
       return this.selectStatusHistory
     }
@@ -49,8 +49,20 @@ export class DataServiceService {
     if(id == null || id == undefined || id == ""){ id = this.listStatus[0].id }
     this.statusSelected = this.listStatus.filter(x => x.id == id).reduce((p, c) => c);
   }
+  async selectStartDate(startDate: Date){
+    if(startDate!=null||startDate != undefined){
+      this.startDate=startDate;      
+    }
+  }
+  async selectEndDate(endDate: Date){
+    if(endDate!=null||endDate != undefined){
+      this.endDate=endDate;
+    }
+  }
+
 
 }
+
 
 export class StatusAtual{
   id: string
@@ -61,7 +73,7 @@ export class StatusAtual{
   tempAmbiente: TempAmbiente
   tempSolo: TempSolo
   pH: PH
-  data: Date;
+  data: string;
 }
 export class StatusHistory{
 
@@ -72,9 +84,11 @@ export class StatusHistory{
   tempSolo: number[]
   pH: number[]
   data: string[];
- 
+  dataCont: Date[];
   
 }
+
+
 
 export class Metadata
 {

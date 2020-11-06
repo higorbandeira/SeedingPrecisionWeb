@@ -18,21 +18,10 @@ export class HistoryComponent implements OnInit  {
   async ngOnInit(): Promise<void> {
     this.service.periodDisabled = false;
     debugger;
-    //await this.service.loadDataStatuHistory(this.service.statusSelected.id);
-    this.lineChartDataTemperatura= [ 
-      
-      { data: this.service.selectStatusHistory.tempAmbiente, label: 'Temperatura Ambiente' },  
-      { data: this.service.selectStatusHistory.tempSolo, label: 'Temperatura do Solo' },   
-    ]
-    this.lineChartDataUmidade= [ 
-      { data: this.service.selectStatusHistory.humidAmbiente, label: 'Umidade Ambiente' },
-      { data: this.service.selectStatusHistory.humidSolo, label: 'Umidade do Solo' },         
-    ]
-    console.log(this.service.selectStatusHistory);
-    
-    this.lineChartLabelsTemperatura = this.service.selectStatusHistory.data;
-    this.lineChartLabelsUmidade = this.service.selectStatusHistory.data;
+    this.OnChanges();    
   }
+
+  
 
  
   // LINE CHART
@@ -65,5 +54,66 @@ export class HistoryComponent implements OnInit  {
   public lineChartLegendUmidade = true;
   public lineChartTypeUmidade = 'line';
   public lineChartPluginsUmidade = []
+
+  public lineChartOptionsPH: (ChartOptions) = {
+    responsive: false,
+  };
+  public lineChartDataPH: ChartDataSets[] =[];
+  public lineChartLabelsPH: Label[] = [];
+  public lineChartColorsPH: Color[] = [
+    {
+      borderColor: 'black',
+      backgroundColor: 'rgba(255,0,0,0.3)',
+      pointBorderColor: 'green'
+      
+    },
+  ];
+  public lineChartLegendPH = true;
+  public lineChartTypePH = 'line';
+  public lineChartPluginsPH = []
+
+public lineChartOptionsLuminosidade: (ChartOptions) = {
+    responsive: false,
+  };
+  public lineChartDataLuminosidade: ChartDataSets[] =[];
+  public lineChartLabelsLuminosidade: Label[] = [];
+  public lineChartColorsLuminosidade: Color[] = [
+    {
+      borderColor: 'black',
+      backgroundColor: 'rgba(255,0,0,0.3)',
+      pointBorderColor: 'yellow'
+    },
+  ];
+  public lineChartLegendLuminosidade = true;
+  public lineChartTypeLuminosidade = 'line';
+  public lineChartPluginsLuminosidade = []
+
+
+
+  async OnChanges() {
+    await this.service.loadDataStatuHistory(this.service.statusSelected.id);
+    this.lineChartDataTemperatura= [ 
+      
+      { data: this.service.selectStatusHistory.tempAmbiente, label: 'Temperatura Ambiente' },  
+      { data: this.service.selectStatusHistory.tempSolo, label: 'Temperatura do Solo' },   
+    ]
+    this.lineChartDataUmidade= [ 
+      { data: this.service.selectStatusHistory.humidAmbiente, label: 'Umidade Ambiente' },
+      { data: this.service.selectStatusHistory.humidSolo, label: 'Umidade do Solo' },         
+    ]
+    this.lineChartDataPH= [        
+      { data: this.service.selectStatusHistory.pH, label: 'PH' },   
+    ]
+    this.lineChartDataLuminosidade= [        
+      { data: this.service.selectStatusHistory.luminosidade, label: 'PH' },   
+    ]
+    this.service.selectStatusHistory.data.pop()
+    this.lineChartLabelsTemperatura = this.service.selectStatusHistory.data;
+    this.lineChartLabelsUmidade = this.service.selectStatusHistory.data;
+    this.lineChartLabelsPH = this.service.selectStatusHistory.data;
+    this.lineChartLabelsLuminosidade = this.service.selectStatusHistory.data;
+
+
+  }
   
 }
