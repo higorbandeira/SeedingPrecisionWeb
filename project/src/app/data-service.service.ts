@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Data, Router } from '@angular/router';
 import { BusyService } from './Busy/busy.service';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class DataServiceService {
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar, private busy: BusyService) { }
   public listStatus: StatusAtual[]
   public statusSelected: StatusAtual
-  public selectStatusHistory: StatusAtual[];
+  public selectStatusHistory: StatusHistory;
 
   public periodDisabled: boolean = true;
 
@@ -29,10 +29,14 @@ export class DataServiceService {
     finally {this.busy.hide()};
   }
   
-  async loadDataStatuHistory(id: string){
+  async loadDataStatuHistory(id: string, StartDate:Date, EndDate:Date){
     this.busy.show()
     try{
-      this.selectStatusHistory = await this.http.get<StatusAtual[]>(this.URL + "api/listStatusHistory/" + id).toPromise();      
+      debugger;
+      let startDate = StartDate?StartDate.toString():"";
+      let endDate =EndDate?EndDate.toString():"";
+      this.selectStatusHistory = await this.http.get<StatusHistory>(this.URL + "api/listStatusHistory?NumberOfTable=" + id+"&StartDate="+startDate+"&EndDate="+endDate).toPromise();      
+      debugger;
       return this.selectStatusHistory
     }
     catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
@@ -58,6 +62,18 @@ export class StatusAtual{
   tempSolo: TempSolo
   pH: PH
   data: Date;
+}
+export class StatusHistory{
+
+  humidAmbiente: number[]
+  humidSolo: number[]
+  luminosidade: number[]
+  tempAmbiente: number[]
+  tempSolo: number[]
+  pH: number[]
+  data: string[];
+ 
+  
 }
 
 export class Metadata

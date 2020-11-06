@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { DataServiceService, StatusAtual } from '../data-service.service';
+
+import { DataServiceService,  StatusAtual } from '../data-service.service';
 
 @Component({
   selector: 'app-equipament-header',
@@ -14,6 +15,7 @@ export class EquipamentHeaderComponent implements OnInit {
   public searchForm: FormGroup;
   private id: string;
   
+  
   async ngOnInit() {
     await this.service.loadDataStatusAtual();
     await this.OnDataInit();
@@ -23,8 +25,12 @@ export class EquipamentHeaderComponent implements OnInit {
       start: new FormControl(),
       end: new FormControl()
     });
+    debugger;
+
+    await this.service.loadDataStatuHistory(this.service.statusSelected.id,this.searchForm.value.start,this.searchForm.value.end);
     this.OnChanges();
   }
+  
 
   private async OnChanges() {
     this.searchForm.valueChanges.subscribe(async value => {
@@ -33,7 +39,8 @@ export class EquipamentHeaderComponent implements OnInit {
     });
   }
 
- private async OnDataInit() {
+  private async OnDataInit() {
     await this.service.selectEquipament(this.id);
+
  }
 }
