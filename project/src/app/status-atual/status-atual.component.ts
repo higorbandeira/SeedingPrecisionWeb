@@ -38,8 +38,8 @@ export class StatusAtualComponent implements OnInit  {
   async ngOnInit(): Promise<void> {
     //await this.service.selectEquipament(undefined);
     this.service.periodDisabled = true;
-    this.service.getExternalAPI();
-    this.service.AjustaPrevisãoDoTempo();
+    await this.service.getExternalAPI();
+    await this.service.AjustaPrevisãoDoTempo();
     
 
   }

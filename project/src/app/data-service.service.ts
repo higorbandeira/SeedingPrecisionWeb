@@ -19,7 +19,7 @@ export class DataServiceService {
   public test;
   public wheathers: Weather[];
   public Agrupamento: string;
-  public periods:["Manhã","Meio-dia",  "Tarde", "Noite"];
+  public periods:string[];
 
   //URL: string = "http://seedingprecisionapi.azurewebsites.net";
   URL: string = "https://localhost:5001/";
@@ -49,39 +49,40 @@ export class DataServiceService {
 
   async AjustaPrevisãoDoTempo()
   {
+    this.periods=["Manhã","Meio-dia",  "Tarde", "Noite"];
     debugger;
-    this.wheathers[0] = {
-      temp_C:this.test.current_condition.temp_C,
-      visibility: this.test.current_condition.visibility,
-      humidity: this.test.current_condition.humidity,
-      pressure: this.test.current_condition.pressure,
-      precipMM: this.test.current_condition.precipMM,
-      localObsDateTime: this.test.current_condition.localObsDateTime,
-      weatherDesc:this.test.current_condition.lang_pt,
+    this.wheathers=[];
+    this.wheathers.push({
+      temp_C:this.test.current_condition[0].temp_C,
+      visibility: this.test.current_condition[0].visibility,
+      humidity: this.test.current_condition[0].humidity,
+      pressure: this.test.current_condition[0].pressure,
+      precipMM: this.test.current_condition[0].precipMM,
+      localObsDateTime: this.test.current_condition[0].localObsDateTime,
+      weatherDesc:this.test.current_condition[0].lang_pt,
       Period: null
-    }
+    })
     let i=1;
-    while(i<13)
+    for(let j=0;j<3;j++)
     {
-      for(let j=0;j<3;j++)
+      let weather = this.test.weather[j];
+      for(let k=0;k<4;k++)
       {
-        for(let k=0;k<4;k++)
+        let hourly =weather.hourly[k];
+        this.wheathers.push(
         {
-          this.wheathers[i] = 
-          {
-            temp_C:this.test.weather[j].hourly[k].temp_C,
-            visibility: this.test.weather[j].hourly[k].visibility,
-            humidity: this.test.weather[j].hourly[k].humidity,
-            pressure: this.test.weather[j].hourly[k].pressure,
-            precipMM: this.test.weather[j].hourly[k].precipMM,
-            localObsDateTime: this.test.weather[j].date,
-            weatherDesc:this.test.weather[j].hourly[k].lang_pt,
-            Period: this.periods[k]
-          }
-          i++;
-        } 
-      }
-    }
+          
+          temp_C:hourly.tempC,
+          visibility: hourly.visibility,
+          humidity: hourly.humidity,
+          pressure: hourly.pressure,
+          precipMM: hourly.precipMM,
+          localObsDateTime: weather.date,
+          weatherDesc:hourly.lang_pt,
+          Period: this.periods[k]
+        })               
+      } 
+    }    
   }
 
   
