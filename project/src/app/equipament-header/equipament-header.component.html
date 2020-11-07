@@ -10,9 +10,19 @@
       </mat-select>
     </mat-form-field>
   </div>
+  <div class="oneFlex content">
+    <strong style="margin-left: 15px;">Selecione o Agrupamento:</strong>
+    <mat-form-field style="margin-left: 15px;">
+      <mat-select formControlName="selectedAgroupament">
+        <mat-option *ngFor="let agroup of listAgroupament" [value]="agroup">
+          <span>{{agroup}}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
   <div class="content equipamentBox">
-    <mat-form-field>
-      <mat-label>Periodo:</mat-label>
+    <mat-form-field >
+      <mat-label>Periodo :</mat-label>
       <mat-date-range-input [rangePicker]="picker" [disabled]="service.periodDisabled">
         <input matStartDate formControlName="start" placeholder="Start date">
         <input matEndDate formControlName="end" placeholder="End date">
