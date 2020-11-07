@@ -21,8 +21,8 @@ export class DataServiceService {
   public Agrupamento: string;
   public periods:string[];
 
-  //URL: string = "http://seedingprecisionapi.azurewebsites.net";
-  URL: string = "https://localhost:5001/";
+  URL: string = "http://seedingapi.azurewebsites.net";
+  //URL: string = "https://localhost:5001/";
   URLeX: string = "https://cors-anywhere.herokuapp.com/http://wttr.in/";
 
   async loadDataStatusAtual(){
