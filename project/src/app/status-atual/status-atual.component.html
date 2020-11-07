@@ -1,6 +1,7 @@
 <app-user-bar></app-user-bar>
 <app-equipament-header></app-equipament-header>
 
+<div>{{this.service.test}}</div>
 <div class="flex-container" style="margin-bottom: 40px;">
   <div class="oneFlex flex-container-collum">
     <div class="side">
@@ -40,7 +41,7 @@
         <div class="box" style="text-align: center;">
           <strong class="boxTitle">Luminosidade</strong>
           <tr></tr>
-          <strong class="boxData">{{service.statusSelected?.luminosidade?.value}}</strong>
+          <strong class="boxData">{{service.statusSelected?.luminosidade?.value}}%</strong>
         </div>
         <div class="box" style="text-align: center;">
           <strong class="boxTitle">Temperatura</strong>

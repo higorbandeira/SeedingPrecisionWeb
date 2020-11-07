@@ -1,52 +1,62 @@
 <app-user-bar></app-user-bar>
 <app-equipament-header></app-equipament-header>
-
-<div class="flex-container" style="margin-bottom: 40px;">
+<div class="padding-left-20"><button class="button" (click)="OnChanges()">Atualizar</button></div>
+<div class="flex-container" style="margin-bottom: 40px;"> 
+  <div class="oneFlex flex-container-collum">
+    <div class="side">      
+      <strong>Temperatura Ambiente Media/Temperatura do Solo Media (ºc)</strong>
+      <canvas baseChart width="500" height="150"
+        [datasets]="lineChartDataTemperatura"
+        [labels]="lineChartLabelsTemperatura"
+        [options]="lineChartOptionsTemperatura"
+        [colors]="lineChartColorsTemperatura"
+        [legend]="lineChartLegendTemperatura"
+        [chartType]="lineChartTypeTemperatura"
+        [plugins]="lineChartPluginsTemperatura">
+      </canvas>     
+    </div>    
+  </div>
   <div class="oneFlex flex-container-collum">
     <div class="side">
-      <strong>Umidade e Temperatura</strong>
+      <strong>Umidade Ambiente /Umidade do Solo Media (%)</strong>
       <canvas baseChart width="500" height="150"
-        [datasets]="lineChartData"
-        [labels]="lineChartLabels"
-        [options]="lineChartOptions"
-        [colors]="lineChartColors"
-        [legend]="lineChartLegend"
-        [chartType]="lineChartType"
-        [plugins]="lineChartPlugins">
+        [datasets]="lineChartDataUmidade"
+        [labels]="lineChartLabelsUmidade"
+        [options]="lineChartOptionsUmidade"
+        [colors]="lineChartColorsUmidade"
+        [legend]="lineChartLegendUmidade"
+        [chartType]="lineChartTypeUmidade"
+        [plugins]="lineChartPluginsUmidade">
       </canvas>
-      <div class="side">
-        <strong>teste</strong>
-      </div>
     </div>
-    <div class="flex-container-collum" style="max-width: 550px; text-align: center; font-size: 30px; line-height: 36px;">
-      <strong>Ambiente</strong>
-      <div class="flex-container">
-        <div class="flex-container">
-          <div class="box" style="text-align: center;">
-            <strong class="boxTitle">Humidade</strong>
-            <tr></tr>
-          </div>
-          <div class="box" style="text-align: center;">
-            <strong class="boxTitle">Luminosidade</strong>
-            <tr></tr>
-          </div>
-          <div class="box" style="text-align: center;">
-            <strong class="boxTitle">Temperatura</strong>
-            <tr></tr>
-          </div>
-        </div>
-      </div>
-      <strong>Solo</strong>
-      <div class="flex-container">
-        <div class="box" style="text-align: center;">
-          <strong class="boxTitle">Humidade</strong>
-          <tr></tr>
-        </div>
-        <div class="box" style="text-align: center;">
-          <strong class="boxTitle">Temperatura</strong>
-          <tr></tr>
-        </div>
-      </div>
+  </div>
+  <div class="oneFlex flex-container-collum">
+    <div class="side">
+      <strong>PH Média</strong>
+      <canvas baseChart width="500" height="150"
+        [datasets]="lineChartDataPH"
+        [labels]="lineChartLabelsPH"
+        [options]="lineChartOptionsPH"
+        [colors]="lineChartColorsPH"
+        [legend]="lineChartLegendPH"
+        [chartType]="lineChartTypePH"
+        [plugins]="lineChartPluginsPH">
+      </canvas>
+    </div>
+  </div>
+  <div class="oneFlex flex-container-collum">
+    <div class="side">
+      <strong>Luminosidade Média</strong>
+      <canvas baseChart width="500" height="150"
+        [datasets]="lineChartDataLuminosidade"
+        [labels]="lineChartLabelsLuminosidade"
+        [options]="lineChartOptionsLuminosidade"
+        [colors]="lineChartColorsLuminosidade"
+        [legend]="lineChartLegendLuminosidade"
+        [chartType]="lineChartTypeLuminosidade"
+        [plugins]="lineChartPluginsLuminosidade">
+      </canvas>
     </div>
   </div>
 </div>
+

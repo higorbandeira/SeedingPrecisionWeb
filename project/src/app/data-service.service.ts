@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Data, Router } from '@angular/router';
 import { BusyService } from './Busy/busy.service';
 
 @Injectable({
@@ -12,12 +12,18 @@ export class DataServiceService {
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar, private busy: BusyService) { }
   public listStatus: StatusAtual[]
   public statusSelected: StatusAtual
-  public selectStatusHistory: StatusAtual[];
-
+  public selectStatusHistory: StatusHistory;
+  public startDate:Date;
+  public endDate:Date;
   public periodDisabled: boolean = true;
+  public test;
+  public wheathers: Weather[];
+  public Agrupamento: string;
+  public periods:string[];
 
   //URL: string = "http://seedingprecisionapi.azurewebsites.net";
   URL: string = "https://localhost:5001/";
+  URLeX: string = "https://cors-anywhere.herokuapp.com/http://wttr.in/";
 
   async loadDataStatusAtual(){
     this.busy.show()
@@ -28,11 +34,64 @@ export class DataServiceService {
     catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
     finally {this.busy.hide()};
   }
+
+
+   async getExternalAPI(){
+    this.busy.show()  
+    try{      
+      this.test = await this.http.get(this.URLeX+"são+bernardo+do+campo?format=j1").toPromise();
+      
+      return this.test;    
+    }
+    catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
+    finally {this.busy.hide()};
+  }
+
+  async AjustaPrevisãoDoTempo()
+  {
+    this.periods=["Manhã","Meio-dia",  "Tarde", "Noite"];
+    debugger;
+    this.wheathers=[];
+    this.wheathers.push({
+      temp_C:this.test.current_condition[0].temp_C,
+      visibility: this.test.current_condition[0].visibility,
+      humidity: this.test.current_condition[0].humidity,
+      pressure: this.test.current_condition[0].pressure,
+      precipMM: this.test.current_condition[0].precipMM,
+      localObsDateTime: this.test.current_condition[0].localObsDateTime,
+      weatherDesc:this.test.current_condition[0].lang_pt,
+      Period: null
+    })
+    let i=1;
+    for(let j=0;j<3;j++)
+    {
+      let weather = this.test.weather[j];
+      for(let k=0;k<4;k++)
+      {
+        let hourly =weather.hourly[k];
+        this.wheathers.push(
+        {
+          
+          temp_C:hourly.tempC,
+          visibility: hourly.visibility,
+          humidity: hourly.humidity,
+          pressure: hourly.pressure,
+          precipMM: hourly.precipMM,
+          localObsDateTime: weather.date,
+          weatherDesc:hourly.lang_pt,
+          Period: this.periods[k]
+        })               
+      } 
+    }    
+  }
+
   
   async loadDataStatuHistory(id: string){
     this.busy.show()
     try{
-      this.selectStatusHistory = await this.http.get<StatusAtual[]>(this.URL + "api/listStatusHistory/" + id).toPromise();      
+      this.endDate = this.endDate==undefined?null:this.endDate ;
+      this.startDate = this.startDate==undefined?null:this.startDate ;
+      this.selectStatusHistory = await this.http.post<StatusHistory>(this.URL +"api/listStatusHistory?NumberOfTable", {NumberOfTable:id , StartDate:this.startDate, EndDate:this.endDate, Agrupamento:this.Agrupamento}).toPromise();      
       return this.selectStatusHistory
     }
     catch (error) { console.error(error); this._snackBar.open(error.error); return false; }
@@ -45,9 +104,30 @@ export class DataServiceService {
     if(id == null || id == undefined || id == ""){ id = this.listStatus[0].id }
     this.statusSelected = this.listStatus.filter(x => x.id == id).reduce((p, c) => c);
   }
+  async selectAgroupament(agroup: string){
+    if(agroup == null || agroup == undefined || agroup == ""){ agroup = "Dia" }
+    this.Agrupamento = agroup;
+  }
+  
 
+  async selectStartDate(startDate: Date){
+    if(startDate!=null||startDate != undefined){
+      this.startDate=startDate;      
+    }
+  }
+  async selectEndDate(endDate: Date){
+    if(endDate!=null||endDate != undefined){
+      this.endDate=endDate;
+    }
+  }
 }
 
+export class PrevisãoDoTempo{
+  current_condition:[]
+  nearest_area:[]
+  request:[]
+  weather:[]
+}
 export class StatusAtual{
   id: string
   type: string
@@ -57,8 +137,47 @@ export class StatusAtual{
   tempAmbiente: TempAmbiente
   tempSolo: TempSolo
   pH: PH
-  data: Date;
+  data: string;
 }
+export class StatusHistory{
+
+  humidAmbiente: number[]
+  humidSolo: number[]
+  luminosidade: number[]
+  tempAmbiente: number[]
+  tempSolo: number[]
+  pH: number[]
+  data: string[];
+  dataCont: Date[];
+  
+}
+
+export class current_condition{
+  temp_C:string
+  visibility: string;
+  cloudcover: string;
+  weather : string;
+  pressure: string;
+  precipMM: string;
+  localObsDateTime: string;
+  observation_time: string;
+  weatherDesc:{}[];
+}
+
+export class Weather{
+  constructor(
+    public temp_C:string,
+    public visibility: string,
+    public humidity: string,
+    public pressure: string,
+    public precipMM: string,
+    public localObsDateTime: string,
+    public weatherDesc:{}[],
+    public Period: string)
+  {}
+}
+
+
 
 export class Metadata
 {

@@ -21,9 +21,12 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       UserName: ['teste', Validators.required],
       Password: ['teste123', Validators.required]
+      
    });
    this.onChanges();
    this.busy.hide();
+   this.userName = this.loginForm.value.UserName
+   this.password = this.loginForm.value.Password
   }
 
   onChanges(){
@@ -35,6 +38,7 @@ export class LoginComponent implements OnInit {
 
   async login(){
     this.busy.show();
+    this.onChanges();
     var login = await this.auth.login(this.userName, this.password);
     if(login == true){
       this.router.navigate(['stats']);
