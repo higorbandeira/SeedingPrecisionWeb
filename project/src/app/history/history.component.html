@@ -1,11 +1,11 @@
 <app-user-bar></app-user-bar>
 <app-equipament-header></app-equipament-header>
 <div class="padding-left-20"><button class="button" (click)="OnChanges()">Atualizar</button></div>
-<div class="flex-container" style="margin-bottom: 40px;"> 
-  <div class="oneFlex flex-container-collum">
-    <div class="side">      
+<div class="flex-container-collum" style="max-width: 1400px;">
+  <div class="flex-container">
+    <div class="box">      
       <strong>Temperatura Ambiente Media/Temperatura do Solo Media (ºc)</strong>
-      <canvas baseChart width="500" height="150"
+      <canvas baseChart width="400" height="150"
         [datasets]="lineChartDataTemperatura"
         [labels]="lineChartLabelsTemperatura"
         [options]="lineChartOptionsTemperatura"
@@ -14,12 +14,10 @@
         [chartType]="lineChartTypeTemperatura"
         [plugins]="lineChartPluginsTemperatura">
       </canvas>     
-    </div>    
-  </div>
-  <div class="oneFlex flex-container-collum">
-    <div class="side">
+    </div>
+    <div class="box">
       <strong>Umidade Ambiente /Umidade do Solo Media (%)</strong>
-      <canvas baseChart width="500" height="150"
+      <canvas baseChart width="400" height="150"
         [datasets]="lineChartDataUmidade"
         [labels]="lineChartLabelsUmidade"
         [options]="lineChartOptionsUmidade"
@@ -30,10 +28,10 @@
       </canvas>
     </div>
   </div>
-  <div class="oneFlex flex-container-collum">
-    <div class="side">
+  <div class="flex-container">
+    <div class="box">
       <strong>PH Média</strong>
-      <canvas baseChart width="500" height="150"
+      <canvas baseChart width="400" height="150"
         [datasets]="lineChartDataPH"
         [labels]="lineChartLabelsPH"
         [options]="lineChartOptionsPH"
@@ -43,11 +41,9 @@
         [plugins]="lineChartPluginsPH">
       </canvas>
     </div>
-  </div>
-  <div class="oneFlex flex-container-collum">
-    <div class="side">
-      <strong>Luminosidade Média</strong>
-      <canvas baseChart width="500" height="150"
+    <div class="box">
+      <strong>Luminosidade Média (%)</strong>
+      <canvas baseChart width="400" height="150"
         [datasets]="lineChartDataLuminosidade"
         [labels]="lineChartLabelsLuminosidade"
         [options]="lineChartOptionsLuminosidade"
