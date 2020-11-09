@@ -21,8 +21,8 @@ export class DataServiceService {
   public Agrupamento: string;
   public periods:string[];
 
-  URL: string = "http://seedingapi.azurewebsites.net/";
-  //URL: string = "https://localhost:5001/";
+  //URL: string = "http://seedingapi.azurewebsites.net/";
+  URL: string = "https://localhost:5001/";
   URLeX: string = "https://cors-anywhere.herokuapp.com/http://wttr.in/";
 
   async loadDataStatusAtual(){
@@ -50,7 +50,6 @@ export class DataServiceService {
   async AjustaPrevisãoDoTempo()
   {
     this.periods=["Manhã","Meio-dia",  "Tarde", "Noite"];
-    debugger;
     this.wheathers=[];
     this.wheathers.push({
       temp_C:this.test.current_condition[0].temp_C,
