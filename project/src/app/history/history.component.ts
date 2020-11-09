@@ -93,18 +93,18 @@ public lineChartOptionsLuminosidade: (ChartOptions) = {
     await this.service.loadDataStatuHistory(this.service.statusSelected.id);
     this.lineChartDataTemperatura= [ 
       
-      { data: this.service.selectStatusHistory.tempAmbiente, label: 'Temperatura Ambiente' },  
-      { data: this.service.selectStatusHistory.tempSolo, label: 'Temperatura do Solo' },   
+      { data: this.service.selectStatusHistory.tempAmbiente, label: 'Temperatura Ambiente (ºc)' },  
+      { data: this.service.selectStatusHistory.tempSolo, label: 'Temperatura do Solo (ºc)' },   
     ]
     this.lineChartDataUmidade= [ 
-      { data: this.service.selectStatusHistory.humidAmbiente, label: 'Umidade Ambiente' },
-      { data: this.service.selectStatusHistory.humidSolo, label: 'Umidade do Solo' },         
+      { data: this.service.selectStatusHistory.humidAmbiente, label: 'Umidade Ambiente (%)' },
+      { data: this.service.selectStatusHistory.humidSolo, label: 'Umidade do Solo (%)' },         
     ]
     this.lineChartDataPH= [        
       { data: this.service.selectStatusHistory.pH, label: 'PH' },   
     ]
     this.lineChartDataLuminosidade= [        
-      { data: this.service.selectStatusHistory.luminosidade, label: 'PH' },   
+      { data: this.service.selectStatusHistory.luminosidade, label: 'Luminosidade (%)' },   
     ]
     this.service.selectStatusHistory.data.pop()
     this.lineChartLabelsTemperatura = this.service.selectStatusHistory.data;
