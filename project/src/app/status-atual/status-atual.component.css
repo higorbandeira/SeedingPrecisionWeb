@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin: 7px;
+  margin: 2px;
 }
 
 .oneFlex{
@@ -22,8 +22,8 @@
   border-radius: 15px;
   margin: 2px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-  max-width: 690px;
-  font-size: 10px;
+  max-width: 756px;
+  font-size: 11px;
 }
 
 .box{
