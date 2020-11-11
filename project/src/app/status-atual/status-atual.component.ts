@@ -1,3 +1,4 @@
+import { DomElementSchemaRegistry, HtmlParser } from '@angular/compiler';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
@@ -40,8 +41,8 @@ export class StatusAtualComponent implements OnInit  {
     this.service.periodDisabled = true;
     await this.service.getExternalAPI();
     await this.service.AjustaPrevisãoDoTempo();
-    
 
+    await this.service.getClima();
   }
 
   getpHColor(pH: number){

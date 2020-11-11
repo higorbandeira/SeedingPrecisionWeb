@@ -1,4 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { HtmlParser } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Data, Router } from '@angular/router';
@@ -20,9 +21,9 @@ export class DataServiceService {
   public wheathers: Weather[];
   public Agrupamento: string;
   public periods:string[];
-
-  URL: string = "http://seedingapi.azurewebsites.net/";
-  //URL: string = "https://localhost:5001/";
+  
+  //URL: string = "http://seedingapi.azurewebsites.net/";
+  URL: string = "http://localhost:5000/";
   URLeX: string = "https://cors-anywhere.herokuapp.com/http://wttr.in/";
 
   async loadDataStatusAtual(){
@@ -35,6 +36,18 @@ export class DataServiceService {
     finally {this.busy.hide()};
   }
 
+  public resultClima: any;
+  async getClima(){
+    var requestOptions: RequestInit = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch(this.URL + "api/getClima", requestOptions)
+      .then(response => response.text())
+      .then(result => this.resultClima = result)
+      .catch(error => console.log('error', error));
+  }
 
    async getExternalAPI(){
     this.busy.show()  

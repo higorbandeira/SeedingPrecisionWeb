@@ -38,7 +38,7 @@ export class AuthService {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     try{
       const param = Object.assign(new LoginEntity, { Username: UserName, Password: Password })
-      const user = await this.http.post<LoginResponse>(proxyurl + this.dataService.URL +"api/user/login", param).toPromise();
+      const user = await this.http.post<LoginResponse>(this.dataService.URL +"api/user/login", param).toPromise();
       if (!user || !user.token) { return false; }
       localStorage.setItem('user', user.userName);
       localStorage.setItem('access_token', user.token);
