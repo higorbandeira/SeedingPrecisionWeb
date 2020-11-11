@@ -17,6 +17,7 @@ export class DataServiceService {
   public startDate:Date;
   public endDate:Date;
   public periodDisabled: boolean = true;
+  public groupDisabled: boolean = true;
   public test;
   public wheathers: Weather[];
   public Agrupamento: string;

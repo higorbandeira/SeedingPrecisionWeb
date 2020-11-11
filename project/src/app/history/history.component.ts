@@ -17,6 +17,7 @@ export class HistoryComponent implements OnInit  {
   
   async ngOnInit(): Promise<void> {
     this.service.periodDisabled = false;
+    this.service.groupDisabled = false;
     this.OnChanges();    
   }
 
