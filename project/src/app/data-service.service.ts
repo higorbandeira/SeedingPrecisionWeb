@@ -24,7 +24,7 @@ export class DataServiceService {
   public Agrupamento: string;
   public periods:string[];
   
-  URL: string = "http://seedingapi.azurewebsites.net/";
+  URL: string = "https://cors-anywhere.herokuapp.com/http://seedingapi.azurewebsites.net/";
   //URL: string = "http://localhost:5000/";
   URLeX: string = "https://cors-anywhere.herokuapp.com/http://wttr.in/";
 
