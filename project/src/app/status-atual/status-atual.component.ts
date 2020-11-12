@@ -41,7 +41,6 @@ export class StatusAtualComponent implements OnInit  {
     this.service.periodDisabled = true;
     this.service.groupDisabled = true;
     await this.service.getExternalAPI();
-    await this.service.AjustaPrevisãoDoTempo();
 
     await this.service.getClima();
   }
