@@ -38,6 +38,14 @@
   font-family: Arial;
   text-decoration-color: honeydew;
 }
+.button {
+  padding: 10px;
+  flex: 1;
+  background: #53CF53;
+  border-radius: 15px 15px 15px 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
 
 .box{
   width: 105px;

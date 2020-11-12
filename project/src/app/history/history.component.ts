@@ -85,7 +85,7 @@ public lineChartOptionsLuminosidade: (ChartOptions) = {
     {
       borderColor: 'black',
       backgroundColor: 'rgba(255,0,0,0.3)',
-      pointBorderColor: 'yellow'
+      pointBorderColor: 'rgb(123,235,100)'
     },
   ];
   public lineChartLegendLuminosidade = true;

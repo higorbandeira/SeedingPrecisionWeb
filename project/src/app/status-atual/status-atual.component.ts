@@ -41,8 +41,11 @@ export class StatusAtualComponent implements OnInit  {
     this.service.periodDisabled = true;
     this.service.groupDisabled = true;
     await this.service.getExternalAPI();
-
     await this.service.getClima();
+  }
+
+  async click(){
+    await this.service.getExternalAPI();
   }
 
   getpHColor(pH: number){
