@@ -18,12 +18,16 @@ export class HistoryComponent implements OnInit  {
   async ngOnInit(): Promise<void> {
     this.service.periodDisabled = false;
     this.service.groupDisabled = false;
+    this.service.endDate = null;
+    this.service.startDate = null;
+    this.service.Agrupamento = "Dia";
+    this.hideData = false;
     this.OnChanges();    
   }
 
   
 
- 
+ public hideData:boolean;
   // LINE CHART
   public lineChartOptionsTemperatura: (ChartOptions) = {
     responsive: false,
@@ -92,6 +96,13 @@ public lineChartOptionsLuminosidade: (ChartOptions) = {
 
   async OnChanges() {
     await this.service.loadDataStatuHistory(this.service.statusSelected.id);
+    debugger;
+    if(this.service.selectStatusHistory.isEmpty){
+      this.hideData = true;
+      return;
+    }
+    this.hideData = false;
+
     this.lineChartDataTemperatura= [ 
       
       { data: this.service.selectStatusHistory.tempAmbiente, label: 'Temperatura Ambiente (ºc)' },  

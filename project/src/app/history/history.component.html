@@ -1,7 +1,7 @@
 <app-user-bar></app-user-bar>
 <app-equipament-header></app-equipament-header>
 <div class="padding-left-20"><button class="button" (click)="OnChanges()">Atualizar</button></div>
-<div class="flex-container-collum" style="max-width: 1400px;">
+<div *ngIf = "!hideData" class="flex-container-collum" style="max-width: 1400px;">
   <div class="flex-container">
     <div class="box">      
       <strong>Temperatura Ambiente Media/Temperatura do Solo Media (ºc)</strong>
@@ -54,5 +54,8 @@
       </canvas>
     </div>
   </div>
+</div>
+<div class="label-box"  *ngIf = "hideData">
+  <span>Nenhum Resultado encontrado para este equipamento neste Período</span>
 </div>
 

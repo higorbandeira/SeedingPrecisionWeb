@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HtmlParser } from '@angular/compiler';
+import { BOOL_TYPE } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Data, Router } from '@angular/router';
@@ -23,8 +24,8 @@ export class DataServiceService {
   public Agrupamento: string;
   public periods:string[];
   
-  URL: string = "http://seedingapi.azurewebsites.net/";
-  //URL: string = "http://localhost:5000/";
+  //URL: string = "http://seedingapi.azurewebsites.net/";
+  URL: string = "http://localhost:5000/";
   URLeX: string = "https://cors-anywhere.herokuapp.com/http://wttr.in/";
 
   async loadDataStatusAtual(){
@@ -162,6 +163,7 @@ export class StatusHistory{
   pH: number[]
   data: string[];
   dataCont: Date[];
+  isEmpty: boolean;
   
 }
 
