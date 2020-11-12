@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin: 7px;
+  margin: 2px;
 }
 
 .oneFlex{
@@ -17,13 +17,13 @@
 
 .side{
   background-color: white;
-  border: #EFEFF1 solid 20px;
-  padding: 25px;
-  text-align: center;
+  border: #EFEFF1 solid 5px;
+  padding: 1px;
   border-radius: 15px;
-  margin: 7px;
+  margin: 2px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-  max-width: 500px;
+  max-width: 756px;
+  font-size: 11px;
 }
 
 .box{
@@ -31,8 +31,8 @@
   height: 100px;
   padding: 5px;
   background-color: white;
-  border: #EFEFF1 solid 20px;
-  margin: 7px;
+  border: #EFEFF1 solid 5px;
+  margin: 2px;
   border-radius: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 }

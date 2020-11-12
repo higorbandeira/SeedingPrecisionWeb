@@ -1,3 +1,4 @@
+import { DomElementSchemaRegistry, HtmlParser } from '@angular/compiler';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
@@ -11,7 +12,7 @@ import { DataServiceService, StatusAtual } from '../data-service.service';
 export class StatusAtualComponent implements OnInit  {
   // LINE CHART
   public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Humidade' },
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Umidade' },
     { data: [55, 49, 70, 51, 26, 15, 80], label: 'Temperatura' },
   ];
   public lineChartLabels: Label[] = ['12/10/2020', '13/10/2020', '14/10/2020', '15/10/2020', '16/10/2020', '17/10/2020', '18/10/2020'];
@@ -38,10 +39,11 @@ export class StatusAtualComponent implements OnInit  {
   async ngOnInit(): Promise<void> {
     //await this.service.selectEquipament(undefined);
     this.service.periodDisabled = true;
+    this.service.groupDisabled = true;
     await this.service.getExternalAPI();
     await this.service.AjustaPrevisãoDoTempo();
-    
 
+    await this.service.getClima();
   }
 
   getpHColor(pH: number){
