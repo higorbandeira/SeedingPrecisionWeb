@@ -18,12 +18,12 @@ export class DataServiceService {
   public endDate:Date;
   public periodDisabled: boolean = true;
   public groupDisabled: boolean = true;
-  public test;
+  public test;sss
   public wheathers: Weather[];
   public Agrupamento: string;
   public periods:string[];
   
-  URL: string = "http://seedingapi.azurewebsites.net/";
+  URL: string = "https://cors-anywhere.herokuapp.com/http://seedingapi.azurewebsites.net/";
   //URL: string = "http://localhost:5000/";
   URLeX: string = "https://cors-anywhere.herokuapp.com/http://wttr.in/";
 
